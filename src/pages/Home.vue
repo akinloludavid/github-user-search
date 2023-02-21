@@ -170,7 +170,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { getUserByName } from "../service/user";
 export default {
   data() {
@@ -178,7 +178,7 @@ export default {
       username: "",
       disabled: true,
       loading: false,
-      devInfo: null,
+      devInfo: null as any,
       error: "",
       light: localStorage.theme === "light",
     };
@@ -192,7 +192,7 @@ export default {
   },
   methods: {
     toggleMode() {
-      if (localStorage.theme === "dark" || !"theme" in localStorage) {
+      if (localStorage.theme === "dark" || !("theme" in localStorage)) {
         localStorage.theme = "light";
         document.documentElement.classList.add("light");
         document.documentElement.classList.remove("dark");
@@ -206,11 +206,10 @@ export default {
         this.light = false;
       }
     },
-    search(user) {
+    search(user: string) {
       this.loading = true;
       getUserByName(user)
         .then((res) => {
-          console.log(res);
           if (res?.response?.data?.message === "Not Found") {
             this.error = res?.response?.data?.message;
             return;
