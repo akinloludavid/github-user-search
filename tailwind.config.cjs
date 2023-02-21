@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
+
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
@@ -85,6 +87,9 @@ module.exports = {
       lineHeight: {
         'loose': '2.5px',
         '12': '3rem',
+      },
+      boxShadow: {
+        'base': '0px 16px 30px -10px rgba(70, 96, 187, 0.198567)',
       }
     },
   },

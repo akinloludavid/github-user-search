@@ -5,6 +5,7 @@ export const getUserByName = async (str: string) => {
     const res = await axios.get(`${baseUrl}/${str}`);
     return res.data;
   } catch (error: any) {
-    return error?.message;
+    return error;
+    // error?.response?.data?.message;
   }
 };
